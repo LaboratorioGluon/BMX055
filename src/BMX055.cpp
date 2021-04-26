@@ -68,7 +68,7 @@ void BMX055::InitAcc(enum BMX055_ACC_BW pBw, enum BMX055_ACC_RANGE pRange){
     mI2cSendByte(mAddressAcc, BMX055_ACC_REG_ACCD_HBW, 0x0);
 }
 
-
+#if 0
 uint8_t BMX055::ReadRawAccData(int16_t accData[3]){
 
     if(mI2cRecvByte == nullptr || mI2cSendByte == nullptr)
@@ -107,7 +107,7 @@ uint8_t BMX055::ReadRawAccData(int16_t accData[3]){
 
     return 0;
 }
-
+#endif
 
 uint8_t BMX055::updateAccData(){
 
@@ -143,18 +143,45 @@ uint8_t BMX055::updateAccData(){
         mAccRawData[2] -= 4096;
     }
 
+    return 1;
 }
 
-uint8_t BMX055::getRawAccData(int16_t accData[3]){
+uint8_t BMX055::getRawAccData(int16_t pAccData[3]){
 
-    if(accData == nullptr)
+    if(pAccData == nullptr)
     {
         return 0;
     }
 
-    accData[0] = mAccRawData[0];
-    accData[1] = mAccRawData[1];
-    accData[2] = mAccRawData[2];
+    pAccData[0] = mAccRawData[0];
+    pAccData[1] = mAccRawData[1];
+    pAccData[2] = mAccRawData[2];
+
+    return 1;
+}
+
+
+uint8_t BMX055::getAccData(float pAccData[3])
+{
+
+    float lDelta;
+
+    if(pAccData == nullptr)
+    {
+        return 0;
+    }
+
+    switch(mAccRange){
+        case BMX055_ACC_RANGE_2G:  lDelta = 0.98; break;
+        case BMX055_ACC_RANGE_4G:  lDelta = 1.95; break;
+        case BMX055_ACC_RANGE_8G:  lDelta = 3.91; break;
+        case BMX055_ACC_RANGE_16G: lDelta = 7.81; break;
+        default: return 0;
+    }
+
+    pAccData[0] = mAccRawData[0] * lDelta/1000.0f;
+    pAccData[1] = mAccRawData[1] * lDelta/1000.0f;
+    pAccData[2] = mAccRawData[2] * lDelta/1000.0f;
 
     return 1;
 }

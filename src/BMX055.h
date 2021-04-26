@@ -44,9 +44,9 @@ public:
     // Accelerometer
 
     void    InitAcc(enum BMX055_ACC_BW pBw, enum BMX055_ACC_RANGE pRange);
-    uint8_t ReadRawAccData(int16_t accData[3]);
     uint8_t updateAccData();
-    uint8_t getRawAccData(int16_t accData[3]);
+    uint8_t getRawAccData(int16_t pAccData[3]);
+    uint8_t getAccData(float pAccData[3]);
 
     // Gyroscope
 
