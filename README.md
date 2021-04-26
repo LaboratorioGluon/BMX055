@@ -2,6 +2,9 @@
 
 This is a WIP library for BMX055, currently supporting only accelerometer in Arduino.
 
+*Tested on:* ESP32-devkit-v1
+
+
 # TODO List
 
 - [x] Support for Accelerometer:
