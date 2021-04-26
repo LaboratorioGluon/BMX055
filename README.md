@@ -2,6 +2,24 @@
 
 This is a WIP library for BMX055, currently supporting only accelerometer in Arduino.
 
+# TODO List
+
+- [x] Support for Accelerometer:
+  - [x] Configuration
+  - [x] Raw Data retrieval
+  - [x] Scaled Data retrieval
+- [ ] Support for Gyroscope:
+  - [ ] Configuration
+  - [ ] Raw Data retrieval
+  - [ ] Scaled Data retrieval
+- [ ] Support for Magnetometer:
+  - [ ] Configuration
+  - [ ] Raw Data retrieval
+  - [ ] Scaled Data retrieval
+
+Future:
+- [ ] Interrupts
+- [ ] Other configs (Tap detect, freefall detect, ...)
 
 # Example for Arduino
 
