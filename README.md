@@ -40,6 +40,8 @@ Currently only Arduino is automatically supported (the HAL can be seen in [BMX05
 #include <Arduino.h>
 #include <BMX055.h>
 
+BMX055 bmx;
+
 void setup(){
 
   Serial.begin(115200);
