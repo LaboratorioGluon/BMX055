@@ -66,9 +66,9 @@ private:
     uint8_t (*mI2cRecvByte)(uint8_t, uint8_t);
 
     // Stored data
-    uint8_t mAccRawData[3];
-    uint8_t mGyrRawData[3];
-    uint8_t mMagRawData[3];
+    uint16_t mAccRawData[3];
+    uint16_t mGyrRawData[3];
+    uint16_t mMagRawData[3];
 
 };
 
