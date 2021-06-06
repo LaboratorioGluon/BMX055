@@ -49,6 +49,10 @@ public:
     uint8_t getAccData(float pAccData[3]);
 
     // Gyroscope
+    void    InitGyr(enum BMX055_GYR_BW pBw, enum BMX055_GYR_RANGE pRange);
+    uint8_t updateGyrData();
+    uint8_t getRawGyrData(int16_t pGyrData[3]);
+    uint8_t getGyrData(float pGyrData[3]);
 
 private:
 
@@ -60,6 +64,10 @@ private:
     // Acc config
     uint8_t mAccBandwidth;
     uint8_t mAccRange;
+    
+    // Gyr config
+    uint8_t mGyrBandwidth;
+    uint8_t mGyrRange;
 
     // HAL
     uint8_t (*mI2cSendByte)(uint8_t addr, uint8_t, uint8_t);
@@ -69,6 +77,8 @@ private:
     uint16_t mAccRawData[3];
     uint16_t mGyrRawData[3];
     uint16_t mMagRawData[3];
+
+
 
 };
 
